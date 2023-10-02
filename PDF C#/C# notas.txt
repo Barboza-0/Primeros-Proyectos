@@ -1,0 +1,99 @@
+Lenguaje horientado a objetos, de tipo seguro, multiplataforma (Mobile, Web, Desktop, Windows, Linux, Mac, Xbox, etc..)
+
+**.NET Architecture** (detrás del codigo)
+
+**Managed Code (C#, Visual Basic)** Dependen de un proceso que convierte el codigo a un intermediario y despues a Lenguaje Maquina.
+
+**Unmanaged Code (C, C++)** No depende de ningun proceso para traducirse a Lenguaje Maquina.
+
+C#  >> Compiler >> Assembly IL code >> CLR(Common Lenguage RunTime) >> JIT(Just In Time) Compiler >> Native Code >> Operating System Services.
+**(IL = INTERMEDIATE LENGUAGE)**
+C++ >> Compiler >> Native Code >> Operating System Services.
+
+Assembly (Proyecto).	**DEBUG (Desarrollo)____Release (Producción)**			**Build (Compilar DLL) Rebuild (Elimina y Recompila DLL) Clean (Elimina DLL)**
+Cada vez que se compila se crea la DLL o se actualiza.
+**Siempre crear NameSpace()**
+
+DLL
+	MetaData
+		Version()
+		TipoDeAlgoritmo()
+		Cultura()
+	DebugMetaData()
+	References()
+	{}
+		Module()
+		Class "Entrada"()
+
+**NameSpaces**
+Assembly DLL ( NameSpaces (Class ( Method ) ) )
+Si un assembly no tiene namespace se asigna uno predeterminado.
+Valido multiples NameSpace y anidarlos.
+Valido tener mismos namespace en diferentes assembly's pero no la misma class en el mismo namespace en diferente archivo en el mismo assembly.
+NameSpaces para agrupar clases.
+
+using (para usar un NameSpace o llamarlo)...
+
+
+**DataTypes**			System.Objet
+
+Value types ( Simple Types( Integral-Float-Char-Boolean )
+	    Enum Types()
+	    Struct Types()
+	    Nullable Types() )
+
+Reference Types ( Class()		Interface()		Array()		Delegate() )
+
+**Memory Ram**
+Tipos de datos (Value Types) van en Stack de la memoria y los tipos de datos (Reference Types) van en el Heap.
+
+**Var** asigna automaticamente el tipo de dato de la variable mientras no sea NULL (Mientras compila)
+**Dynamic** asigna automaticamente el tipo de dato aunque sea NULL (Mientras ejecuta)
+
+(Tipo de dato) dato1 = default(Tipo de dato)	Asigna el valor por default del tipo de dato.
+
+10.5 = double
+10.5M = decimal
+10.5F = float
+
+**BOXING / UNBOXING**
+
+Boxing es convertir de (Value type) a (Reference type) - Implicit - Crea copias del valor				int entero = 10; **object objeto = entero;**
+Unboxing es convertir de (Reference type) a (Value type) - Explicit - pasa la ubicación en memoria del dato original...Siempre = (Tipo de dato)nombre **int entero2 = (int)objeto;
+
+**Casting convertir de un tipo de dato a otro tipo de dato** 		(float flotante = entero)-Implicit LIST	(short flotante = (short)entero)-Explicit LIST.
+
+**ACCESS MODIFIERS**
+
+Una manera de controlar el acceso a las clases o a los miembros, para tener nuestros programas seguros.
+(5 Types)		-Public 		-Private		-protected	-Internal		-Protected Internal.
+
+public class customer
+{
+	private string Name;
+}
+
+var john = new Customer();
+john.Name; // No compila
+
+Programación orientada a objetos conceptos
+-Encapsulation / Esconder informacion **
+-Inheritance
+-Polymorphism
+
+ Encapsulation	(Esconder información de lo que pasa dentro del programa)
+provide getter/setter methods como publicos.
+
+public class Person
+{
+	private string _name;
+	public void SetName(string name)
+	{
+		if (!string.IsNullOrEmpty(name))
+			this._name = name;
+	}
+	public string GetName()
+	{
+		return _name;
+	}
+}
